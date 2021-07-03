@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+		<title>CRUD</title>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar" role="navigation" aria-label="main navigation">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="/">
+						Javascript CRUD
+					</a>
+
+				</div>
+			</nav>
+		</header>
+
+		<main class="main-content">
+			<div class="crud-container">
+				<div class="crud-header">
+					<h1>Estudiantes registrados</h1>
+					  <button class="button is-success" id="openRegisterModal">
+						  <i class="fas fa-plus"></i>
+
+						  <span>Nuevo estudiante</span>
+					  </button>
+				</div>
+
+
+				<table class="table">
+  <thead>
+    <tr>
+	<th>#</th>
+	<th>Nombre</th>
+	<th>Apellido paterno</th>
+	<th>Apellido materno</th>
+	<th>Teléfono</th>
+	<th>Email</th>
+	<th>Opciones</th>
+
+    </tr>
+  </thead>
+  <tbody id="students-table">
+  </tbody>
+</table>
+			</div>
+		</main>
+
+
+		<!-- modal card -->
+		<div class="modal" id="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Registrar nuevo estudiante</p>
+      <button class="delete" aria-label="close" id="closeRegisterModal"></button>
+    </header>
+
+
+    <section class="modal-card-body"> 
+
+	    <form id="register-form">
+		    <div class="field">
+  <label class="label">Nombre</label>
+  <div class="control">
+    <input class="input" type="text" name="nombre" placeholder="Ingresa tu nombre">
+  </div>
+</div>
+
+
+		    <div class="field">
+  <label class="label">Apellido paterno</label>
+  <div class="control">
+    <input class="input" type="text" name="apePat" placeholder="Ingresa tu apellido paterno">
+  </div>
+</div>
+
+
+		    <div class="field">
+  <label class="label">Apellido Materno</label>
+  <div class="control">
+    <input class="input" type="text" name="apeMat" placeholder="Ingresa tu apellido materno">
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Teléfono</label>
+  <div class="control has-icons-left">
+    <input class="input" type="tel" name="cel" placeholder="+52 00000" value="">
+    <span class="icon is-small is-left">
+      <i class="fas fa-phone"></i>
+    </span>
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Correo Electrónico</label>
+  <div class="control has-icons-left">
+    <input class="input" type="email" name="email" placeholder="correo@mail.com" value="">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Descripción:</label>
+  <div class="control">
+    <textarea class="textarea" name="desc" placeholder="Textarea"></textarea>
+  </div>
+</div>
+
+
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-success">
+	      <i class="fas fa-save"></i>
+	      <span>Registrar</span>
+      </button>
+	    </form>
+
+
+    </footer>
+  </div>
+</div>
+
+<!-- FIN PRIMER MODAL -->
+
+
+<!-- SEGUNDO MODAL -->
+		<!-- modal card -->
+		<div class="modal" id="modal-update">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+	    <p class="modal-card-title">Actualizar estudiante</p>
+      <button class="delete" aria-label="close" id="closeUpdateModal"></button>
+    </header>
+
+
+    <section class="modal-card-body"> 
+
+	    <form id="update-form">
+		    <div class="field">
+  <label class="label">Nombre</label>
+  <div class="control">
+    <input class="input" type="text" name="nombre" placeholder="Ingresa tu nombre">
+  </div>
+</div>
+
+
+		    <div class="field">
+  <label class="label">Apellido paterno</label>
+  <div class="control">
+    <input class="input" type="text" name="apePat" placeholder="Ingresa tu apellido paterno">
+  </div>
+</div>
+
+
+		    <div class="field">
+  <label class="label">Apellido Materno</label>
+  <div class="control">
+    <input class="input" type="text" name="apeMat" placeholder="Ingresa tu apellido materno">
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Teléfono</label>
+  <div class="control has-icons-left">
+    <input class="input" type="tel" name="cel" placeholder="+52 00000" value="">
+    <span class="icon is-small is-left">
+      <i class="fas fa-phone"></i>
+    </span>
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Correo Electrónico</label>
+  <div class="control has-icons-left">
+    <input class="input" type="email" name="email" placeholder="correo@mail.com" value="">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+  </div>
+</div>
+
+
+<div class="field">
+  <label class="label">Descripción:</label>
+  <div class="control">
+    <textarea class="textarea" name="desc" placeholder="Textarea"></textarea>
+  </div>
+</div>
+
+
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-success">
+	      <i class="fas fa-save"></i>
+	      <span>Actualizar</span>
+      </button>
+	    </form>
+
+
+    </footer>
+  </div>
+</div>
+
+<!-- FIN SEGUNDO MODAL -->
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+<script src="./js/app.js"></script>
+
+	</body>
+</html>
